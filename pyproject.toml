@@ -3,12 +3,12 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "jewei-mysql-mcp-server"
-version = "0.1.4"
+name = "jewei-demo-mcp-server"
+version = "0.1.0"
 authors = [
-    {name = "Jewei", email = "your.email@example.com"}
+    {name = "Jewei", email = "jiweifong@qq.com"}
 ]
-description = "MySQL MCP服务器，提供SQL查询和表结构查询功能"
+description = "DEMO MCP服务器，提供DEMO功能"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -18,17 +18,15 @@ classifiers = [
 ]
 dependencies = [
     "fastmcp>=0.1.0",
-    "sqlalchemy>=1.4.0",
-    "mysqlclient>=2.1.0",
     "python-dotenv>=0.19.0",
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/yourusername/jewei-mysql-mcp-server"
-"Bug Tracker" = "https://github.com/yourusername/jewei-mysql-mcp-server/issues"
+"Homepage" = "https://github.com/jeweis/jewei-demo-mcp-server"
+"Bug Tracker" = "https://github.com/jeweis/jewei-demo-mcp-server/issues"
 
 [project.scripts]
-jewei-mysql-mcp-server = "jewei_mysql_mcp_server.server:main"
+jewei-demo-mcp-server = "jewei_demo_mcp_server.server:main"
 
 [tool.setuptools]
-packages = ["jewei_mysql_mcp_server"]
+packages = ["jewei_demo_mcp_server"]

@@ -1,10 +1,10 @@
 # MySQL MCP Server
 
-这是一个基于FastMCP的MySQL数据库查询服务器，提供了以下功能：
+这是一个基于FastMCP的demo服务器，提供了以下功能：
 
-- 执行SQL查询（仅支持SELECT语句）
-- 获取表结构信息
-- 列出数据库中的所有表
+- 测试工具
+- 测试资源
+- 测试提示
 
 
 ## MCP 配置
@@ -22,7 +22,7 @@
       "disabled": false,
       "command": "uvx",
       "args": [
-        "jewei-mysql-mcp-server"
+        "jewei-demo-mcp-server"
       ],
       "env": {
         "DB_HOST": "your_db_host",
@@ -49,7 +49,7 @@
     "jewei-mysql": {
       "command": "uvx",
       "args": [
-        "jewei-mysql-mcp-server"
+        "jewei-demo-mcp-server"
       ],
       "env": {
         "DB_HOST": "your_db_host",
@@ -88,25 +88,17 @@ DB_NAME=your_database
 ### 使用uvx安装并运行（推荐）
 
 ```bash
-uvx --from jewei-mysql-mcp-server jewei-mysql-mcp-server
+uvx --from jewei-demo-mcp-server jewei-demo-mcp-server
 ```
 
 ### 或者从源码运行
 
 ```bash
-python -m jewei_mysql_mcp_server.server
+python -m jewei_demo_mcp_server.server
 ```
 
 ## 功能
 
-### 执行SQL查询
+### 测试
 
-执行SQL查询并返回结果集（仅支持SELECT语句）。
-
-### 获取表结构信息
-
-获取指定表的结构信息，包括列信息、主键、外键和索引。
-
-### 列出数据库中的所有表
-
-列出指定数据库中的所有表。
+测试

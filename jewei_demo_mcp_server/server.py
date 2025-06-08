@@ -1,6 +1,6 @@
 # server.py
 """
-MCP服务器主模块，提供MySQL查询和表结构查询功能
+MCP服务器主模块，提供DEMO功能
 """
 
 from typing import Dict, Any
@@ -8,86 +8,29 @@ from fastmcp import FastMCP
 
 from typing import Dict, Any
 from fastmcp import FastMCP
-from sqlalchemy import text
-from pydantic import Field
 
 from .app_config import config
-from .core import execute_query, get_table_info, get_db_connection, list_show_tables, get_database_info
+from .core import helloworld
 
 # 创建MCP服务器实例
 mcp = FastMCP(name=config.SERVER_NAME)
 
 @mcp.tool()
-def query_sql(sql: str) -> Dict[str, Any]:
-    """执行SQL查询并返回结果集（仅支持SELECT语句）
+def helloworld(name: str) -> Dict[str, Any]:
+    """返回问好内容
     
     Args:
-        sql: SQL查询语句（必须是SELECT语句）
+        name: 你的名字
         
     Returns:
-        包含查询结果的字典，格式为：
+        包含问好结果的字典，格式为：
         {
-            "columns": [列名列表],
-            "rows": [行数据列表],
-            "row_count": 结果行数
+            "text": [问好内容],
+            "code": [代号]
         }
     """
-    return execute_query(sql)
+    return helloworld(name)
 
-@mcp.tool()
-def get_table_structure(table_name: str, schema: str = None) -> Dict[str, Any]:
-    """获取指定表的结构信息
-    
-    Args:
-        table_name: 表名
-        schema: 数据库名，默认为当前数据库
-        
-    Returns:
-        包含表结构信息的字典，格式为：
-        {
-            "columns": [列信息列表],
-            "primary_keys": [主键列表],
-            "foreign_keys": [外键信息列表],
-            "indexes": [索引信息列表]
-        }
-    """
-    return get_table_info(table_name, schema)
-
-@mcp.tool()
-def list_tables(schema: str = None) -> Dict[str, Any]:
-    """列出数据库中的所有表
-    
-    Args:
-        schema: 数据库名，默认为当前数据库
-        
-    Returns:
-        包含表列表的字典，格式为：
-        {
-            "tables": [表信息列表],
-            "count": 表数量
-        }
-    """
-    return list_show_tables(schema)
-
-@mcp.tool()
-def get_db_info() -> Dict[str, Any]:
-    """获取数据库基本信息
-    
-    Returns:
-        包含数据库信息的字典，格式为：
-        {
-            "database_name": 当前数据库名,
-            "version": 数据库版本,
-            "schemas": [数据库列表],
-            "connection": {
-                "host": 主机名,
-                "port": 端口,
-                "database": 数据库名,
-                "user": 用户名
-            }
-        }
-    """
-    return get_database_info()
 
 @mcp.resource(
     uri="data://sql_describe",      # Explicit URI (required)
