@@ -26,7 +26,7 @@ dependencies = [
 "Bug Tracker" = "https://github.com/jeweis/jewei-demo-mcp-server/issues"
 
 [project.scripts]
-jewei-demo-mcp-server = "jewei_demo_mcp_server.server:main"
+jewei-demo-mcp-server = "server:main"
 
 [tool.setuptools]
 packages = ["jewei_demo_mcp_server"]

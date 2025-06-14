@@ -4,19 +4,16 @@ MCP服务器主模块，提供DEMO功能
 """
 
 from typing import Dict, Any
-from fastmcp import FastMCP
+from fastmcp import FastMCP, Field
 
-from typing import Dict, Any
-from fastmcp import FastMCP
-
-from .app_config import config
-from .core import helloworld
+from jewei_demo_mcp_server.app_config import config
+from jewei_demo_mcp_server.core import helloworld
 
 # 创建MCP服务器实例
 mcp = FastMCP(name=config.SERVER_NAME)
 
 @mcp.tool()
-def helloworld(name: str) -> Dict[str, Any]:
+def hello(name: str) -> Dict[str, Any]:
     """返回问好内容
     
     Args:
@@ -29,7 +26,7 @@ def helloworld(name: str) -> Dict[str, Any]:
             "code": [代号]
         }
     """
-    return helloworld(name)
+    return helloworld()
 
 
 @mcp.resource(
