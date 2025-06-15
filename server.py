@@ -4,7 +4,8 @@ MCP服务器主模块，提供DEMO功能
 """
 
 from typing import Dict, Any
-from fastmcp import FastMCP, Field
+from fastmcp import FastMCP
+from pydantic import Field
 
 from jewei_demo_mcp_server.app_config import config
 from jewei_demo_mcp_server.core import helloworld
